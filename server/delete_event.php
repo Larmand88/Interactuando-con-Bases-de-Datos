@@ -5,10 +5,10 @@ require ('DBconector.php');
 if ($_SESSION['isLogin']) {
 
 	$con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-	$response['conexion'] = $con -> initConexion('BDAgendaNextU');
-	
+	$response['conexion'] = $con -> initConexion('BasedeDatosAgenda');
+
 	if ($response['conexion'] == 'OK') {
-		
+
 		if ($con -> eliminarRegistro('Eventos', 'id = ' . $_POST['id']))
 			$response['msg'] = 'OK';
 		else

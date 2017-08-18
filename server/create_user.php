@@ -3,7 +3,7 @@
 require ('DBconector.php');
 
 $con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-if ($con -> initConexion('BDAgendaNextU') == 'OK') {
+if ($con -> initConexion('BasedeDatosAgenda') == 'OK') {
 	for ($i = 1; $i <= 3; $i++) {
 		$datos['nombre'] = "Usuario " . $i;
 		$datos['email'] = "user" . $i . "@laamistad.com";

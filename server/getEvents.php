@@ -3,9 +3,9 @@
 session_start();
 if($_SESSION['isLogin']){
 	require ('DBconector.php');
-	
+
 	$con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-	$response['conexion'] = $con -> initConexion('BDAgendaNextU');
+	$response['conexion'] = $con -> initConexion('BasedeDatosAgenda');
 	if ($response['conexion'] == 'OK') {
 		$resultado = $con -> consultar(['Eventos'], ['*'], 'Usuarios_id="' . $_SESSION['userLogin']['id'] . '"');
 		if ($resultado -> num_rows != 0) {

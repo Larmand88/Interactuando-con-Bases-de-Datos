@@ -1,6 +1,6 @@
 <?php
 
- 
+
 function validateDate($date, $format = 'Y-m-d H:i:s')
 {
     $d = DateTime::createFromFormat($format, $date);
@@ -11,9 +11,9 @@ session_start();
 require ('DBconector.php');
 
 if ($_SESSION['isLogin']) {
-	
+
 	$con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-	$response['conexion'] = $con -> initConexion('BDAgendaNextU');
+	$response['conexion'] = $con -> initConexion('BasedeDatosAgenda');
 	if ($response['conexion'] == 'OK') {
 		if(validateDate($_POST['start_date'], 'Y-m-d'))
 			$datos['fecha_ini'] = $_POST['start_date'];
@@ -23,7 +23,7 @@ if ($_SESSION['isLogin']) {
 			$datos['fecha_fin'] = $_POST['end_date'];
 		if(validateDate($_POST['end_hour'], 'H:i:s'))
 			$datos['hora_fin'] = $_POST['end_hour'];
-		
+
 		if ($con -> actualizarRegistro('Eventos', $datos, 'id = ' . $_POST['id']))
 			$response['msg'] = 'OK';
 		else

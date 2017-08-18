@@ -8,7 +8,7 @@ $response['conexion'] = 'Sin conexión';
 
 if (($email = filter_var($_POST['username'], FILTER_VALIDATE_EMAIL)) && !empty($pass)) {
 	$con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-	$response['conexion'] = $con -> initConexion('BDAgendaNextU');
+	$response['conexion'] = $con -> initConexion('BasedeDatosAgenda');
 	if ($response['conexion'] == 'OK') {
 		$resultado = $con -> consultar(['Usuarios'], ['*'], 'email="' . $email . '"');
 		if ($resultado -> num_rows != 0) {

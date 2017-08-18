@@ -3,10 +3,10 @@
   require ('DBconector.php');
 
 if($_SESSION['isLogin']){
-	
+
 	$con = new ConectorBD('localhost', 'nextu', 'abc1234*');
-	$response['conexion'] = $con -> initConexion('BDAgendaNextU');
-	
+	$response['conexion'] = $con -> initConexion('BasedeDatosAgenda');
+
 	if ($response['conexion'] == 'OK') {
 		$datos['titulo'] = $_POST['titulo'];
 		$datos['fecha_ini'] = $_POST['start_date'];
@@ -19,7 +19,7 @@ if($_SESSION['isLogin']){
 			$datos['hora_fin'] = $_POST['end_hour'];
 		}
 		$datos['Usuarios_id'] = $_SESSION['userLogin']['id'];
-		
+
 		if ($con -> insertData('Eventos', $datos))
 			$response['msg'] = 'OK';
 		else
